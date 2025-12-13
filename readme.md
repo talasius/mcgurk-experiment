@@ -4,6 +4,8 @@
 
 Для начала, установите [PyschoPy v.2025.2.3](https://www.psychopy.org/download.html)
 
+- Скачайте архив с экспериментом `кнопка Code -> Download ZIP`
+- Распакуйте ахрхив в любую папку
 - Откройте `\mcgurk.psyexp` в среде PsychoPy Builder для работы с GUI, или же
 - Откройте `\mcgurk.py` в среде PsychoPy Coder для работы с кодом
 
