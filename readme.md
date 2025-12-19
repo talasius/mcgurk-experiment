@@ -4,7 +4,7 @@
 
 Для начала, установите [PyschoPy v.2025.2.3](https://www.psychopy.org/download.html)
 
-- [Скачайте](https://github.com/talasius/mcgurk-experiment/releases/tag/1.0a) архив с экспериментом со страницы последнего релиза
+- [Скачайте](https://github.com/talasius/mcgurk-experiment/releases/tag/1.0b) архив с экспериментом со страницы последнего релиза
 - Распакуйте ахрхив в любую папку
 - Откройте `\mcgurk.psyexp` в среде PsychoPy Builder для работы с GUI, или же
 - Откройте `\mcgurk.py` в среде PsychoPy Coder для работы с кодом
