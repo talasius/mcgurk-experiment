@@ -1,8 +1,8 @@
-#!/usr/bin/env python
+﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 """
 This experiment was created using PsychoPy3 Experiment Builder (v2025.1.1),
-    on December 09, 2025, at 18:26
+    on December 26, 2025, at 15:04
 If you publish work using this script the most relevant publication is:
 
     Peirce J, Gray JR, Simpson S, MacAskill M, Höchenberger R, Sogo H, Kastman E, Lindeløv JK. (2019) 
@@ -164,18 +164,6 @@ def setupLogging(filename):
         )
     else:
         logging.console.setLevel('warning')
-    # save a log file for detail verbose info
-    logFile = logging.LogFile(filename+'.log')
-    if PILOTING:
-        logFile.setLevel(
-            prefs.piloting['pilotLoggingLevel']
-        )
-    else:
-        logFile.setLevel(
-            logging.getLevel('info')
-        )
-    
-    return logFile
 
 
 def setupWindow(expInfo=None, win=None):
@@ -385,7 +373,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     
     
     instructionsText = visual.TextStim(win=win, name='instructionsText',
-        text='Добро пожаловать!\n\nВы увидите несколько коротких видео\nПосле просмотра видео, вам будет предложено ответить, что вы услышали\n\n Если готовы, то нажмите пробел для того, чтобы начать',
+        text='Добро пожаловать!\n\nВы увидите несколько коротких видео\nПосле просмотра видео, Вам будет предложено ответить, что Вы услышали\n\n Если готовы, то нажмите пробел для того, чтобы начать',
         font='Courier New',
         units='norm', pos=(0, 0), draggable=False, height=0.085, wrapWidth=1.8, ori=0.0, 
         color=[-0.8902, -0.7490, -0.8039], colorSpace='rgb', opacity=None, 
@@ -402,7 +390,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # --- Initialize components for Routine "fixation" ---
     fixationScreen = visual.TextStim(win=win, name='fixationScreen',
         text='*',
-        font='Arial',
+        font='Courier New',
         pos=(0, 0), draggable=False, height=0.08, wrapWidth=None, ori=0.0, 
         color=[-0.8902, -0.7490, -0.8039], colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
@@ -417,20 +405,20 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         filename=None, movieLib='ffpyplayer',
         loop=False, volume=1.0, noAudio=False,
         pos=(0, 0), size=(1.8, 1.0), units=win.units,
-        ori=0.0, anchor='center',opacity=None, contrast=1.0,
+        ori=0.0, anchor='center',opacity=None, contrast=0.7,
         depth=-1
     )
     
     # --- Initialize components for Routine "response" ---
     responseScreen = visual.TextStim(win=win, name='responseScreen',
-        text='Что вы услышали?',
+        text='Что было сказано?',
         font='Courier New',
         pos=(0, 0), draggable=False, height=0.05, wrapWidth=None, ori=0.0, 
         color=[-0.8902, -0.7490, -0.8039], colorSpace='rgb', opacity=None, 
         languageStyle='LTR',
         depth=0.0);
     responseForm = visual.TextBox2(
-         win, text=None, placeholder='Напишите, что вы услышали', font='Courier New',
+         win, text=None, placeholder='Напишите, что было сказано', font='Courier New',
          ori=0.0, pos=(0, 0), draggable=False, units='norm',     letterHeight=0.05,
          size=(0.9, 0.1), borderWidth=1.5,
          color=[-0.8902, -0.7490, -0.8039], colorSpace='rgb',
@@ -636,7 +624,7 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
     # set up handler to look after randomisation of conditions etc
     blocks_loop = data.TrialHandler2(
         name='blocks_loop',
-        nReps=1.0, 
+        nReps=2.0, 
         method='random', 
         extraInfo=expInfo, 
         originPath=-1, 
@@ -804,7 +792,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         trial.tStartRefresh = win.getFutureFlipTime(clock=globalClock)
         trial.tStart = globalClock.getTime(format='float')
         trial.status = STARTED
-        thisExp.addData('trial.started', trial.tStart)
         trial.maxDuration = None
         # keep track of which components have finished
         trialComponents = trial.components
@@ -842,8 +829,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                 congurentVideo.tStart = t  # local t and not account for scr refresh
                 congurentVideo.tStartRefresh = tThisFlipGlobal  # on global time
                 win.timeOnFlip(congurentVideo, 'tStartRefresh')  # time at next scr refresh
-                # add timestamp to datafile
-                thisExp.timestampOnFlip(win, 'congurentVideo.started')
                 # update status
                 congurentVideo.status = STARTED
                 congurentVideo.setAutoDraw(True)
@@ -856,8 +841,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
                     congurentVideo.tStop = t  # not accounting for scr refresh
                     congurentVideo.tStopRefresh = tThisFlipGlobal  # on global time
                     congurentVideo.frameNStop = frameN  # exact frame index
-                    # add timestamp to datafile
-                    thisExp.timestampOnFlip(win, 'congurentVideo.stopped')
                     # update status
                     congurentVideo.status = FINISHED
                     congurentVideo.setAutoDraw(False)
@@ -901,7 +884,6 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
         # store stop times for trial
         trial.tStop = globalClock.getTime(format='float')
         trial.tStopRefresh = tThisFlipGlobal
-        thisExp.addData('trial.stopped', trial.tStop)
         congurentVideo.stop()  # ensure movie has stopped at end of Routine
         # the Routine "trial" was not non-slip safe, so reset the non-slip timer
         routineTimer.reset()
@@ -1133,12 +1115,21 @@ def run(expInfo, thisExp, win, globalClock=None, thisSession=None):
             blocks_loop.status = STARTED
         thisExp.nextEntry()
         
-    # completed 1.0 repeats of 'blocks_loop'
+    # completed 2.0 repeats of 'blocks_loop'
     blocks_loop.status = FINISHED
     
     if thisSession is not None:
         # if running in a Session with a Liaison client, send data up to now
         thisSession.sendExperimentData()
+    # get names of stimulus parameters
+    if blocks_loop.trialList in ([], [None], None):
+        params = []
+    else:
+        params = blocks_loop.trialList[0].keys()
+    # save data for this loop
+    blocks_loop.saveAsExcel(filename + '.xlsx', sheetName='blocks_loop',
+        stimOut=params,
+        dataOut=['n','all_mean','all_std', 'all_raw'])
     
     # --- Prepare to start Routine "thank_you" ---
     # create an object to store info about Routine thank_you
@@ -1310,7 +1301,6 @@ def endExperiment(thisExp, win=None):
     # run any 'at exit' functions
     for fcn in runAtExit:
         fcn()
-    logging.flush()
 
 
 def quit(thisExp, win=None, thisSession=None):
@@ -1331,7 +1321,6 @@ def quit(thisExp, win=None, thisSession=None):
         # and win.timeOnFlip() tasks get executed before quitting
         win.flip()
         win.close()
-    logging.flush()
     if thisSession is not None:
         thisSession.stop()
     # terminate Python process
